@@ -1,0 +1,30 @@
+.cell_card_author_content{
+    padding: 0;
+    margin: 0;
+}
+
+.card_author_content{
+    margin-left: 15px;
+}
+
+.card_main_content_text{
+    margin-left: 15px;
+}
+
+.card_sign{
+    padding: 10px 0;
+}
+
+.card_main_content_media{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.media_image{
+    width: calc(100% - 30px);
+    /* width: 90%; */
+    height: auto;
+    border-radius: 12px;
+}
