@@ -48,13 +48,17 @@ export const Default = ({ id }) => {
                     </Text>
                     }
                     <Button onClick={()=>setActivePanel('my_signatures')} size="l">Мои автографы</Button>
+                    <Button mode='tertiary'  onClick={()=>setActivePanel('privacy')} size="l">Приватность</Button>
                 </Gradient>
                 }
                 {launchParams?.vk_has_profile_button != "1" &&
                 <Group mode="card">
                 <Placeholder
                 icon = {<Icon56InfoOutline width={48} height = {48}/>}
-                action = {<Button onClick = {()=>{openProfile(296223969)}} size = 'm'>Исправить это</Button>}
+                action = {<Button
+                // onClick = {()=>{openProfile(296223969)}}
+                onClick = {addToProfile}
+                size = 'm'>Исправить это</Button>}
                 >
                     Вы не добавили кнопку приложения в профиль, никто не сможет оставить вам автограф!
                 </Placeholder>

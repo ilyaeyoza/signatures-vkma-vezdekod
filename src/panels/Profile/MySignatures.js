@@ -48,7 +48,7 @@ export const MySignatures = ({id}) => {
                 }
 
                 {(!load && signatures.length > 0) &&
-                <SignatureList signatures={signatures} />
+                <SignatureList signatures={signatures} share = {true}/>
                 }
 
                 {(!load && signatures.length == 0) &&

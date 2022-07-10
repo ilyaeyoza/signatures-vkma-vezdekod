@@ -11,8 +11,12 @@ const StorageProvider = ({children}) => {
     const [popout, setPopout] = useState(<ScreenSpinner size="large"/>)
     const [fetchedUser, setUser] = useState(null);
     const [launchParams, setLaunchParams] = useState(null)
-    const [defaultParams, setDeafultParams] = useState(null)
+    const [defaultParams, setDefaultParams] = useState(null)
     const [activeProfile, setActiveProfile] = useState(null)
+    const [snack, setSnack] = useState(null)
+    const [hideFriendsPlaceholder, setHideFriendsPlaceholder] = useState(false)
+    const [alreadySet, setAlreadySet] = useState(true)
+    const [isMobile, setIsMobile] = useState(false)
 
     useEffect(() => {
 
@@ -24,6 +28,24 @@ const StorageProvider = ({children}) => {
             let params = Object.fromEntries(urlSearchParams.entries());
             setLaunchParams(params)
 
+            if(params.vk_platform == 'mobile_android' || params.vk_platform == 'mobile_iphone'){
+                setIsMobile(true)
+            }
+
+            if(params.vk_has_profile_button != '1'){
+                setAlreadySet(false)
+            }
+
+            if(params.vk_profile_button_forbidden == '1'){
+                setAlreadySet(false)
+            }
+
+            if(params.vk_profile_id && Number(params.vk_profile_id)){
+                if(Number(params.vk_profile_id) != user.id){
+                    openProfile(Number(params.vk_profile_id))
+                }
+            }
+
             const req = await fetch(`${server}get_default`, {method:'POST', body:JSON.stringify(
                 {
                     params:window.location.search
@@ -32,7 +54,7 @@ const StorageProvider = ({children}) => {
             if(req.ok){
                 const res = await req.json()
                 if(!res.error){
-                    setDeafultParams(res.default)
+                    setDefaultParams(res.default)
                 }
             }
 
@@ -50,8 +72,12 @@ const StorageProvider = ({children}) => {
     const value = {
         activePanel, setActivePanel,
         popout, setPopout,
-        fetchedUser, defaultParams, launchParams,
-        activeProfile, openProfile
+        fetchedUser, defaultParams, launchParams, setDefaultParams,
+        activeProfile, openProfile,
+        snack, setSnack,
+        hideFriendsPlaceholder, setHideFriendsPlaceholder,
+        alreadySet, setAlreadySet,
+        isMobile
     }
 
     return(

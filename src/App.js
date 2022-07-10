@@ -9,6 +9,7 @@ import { Default } from './panels/Default/Default';
 import { MySignatures } from './panels/Profile/MySignatures';
 import { Profile } from './panels/Profile/Profile';
 import { NewSignature } from './panels/NewSignature/NewSignature';
+import { Privacy } from './panels/Privacy/Privacy';
 
 const App = () => {
 	let {
@@ -41,6 +42,7 @@ const App = () => {
 								<MySignatures id = 'my_signatures'/>
 								<Profile id = 'profile' />
 								<NewSignature id = 'new_signature' />
+								<Privacy id = 'privacy' />
 							</View>
 						</SplitCol>
 					</SplitLayout>

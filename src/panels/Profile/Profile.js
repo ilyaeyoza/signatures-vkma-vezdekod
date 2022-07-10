@@ -12,7 +12,7 @@ export const Profile = ({ id }) => {
     const [load, setLoad] = useState(true)
     const [page, setPage] = useState(0)
     let {
-        activeProfile, setActivePanel
+        activeProfile, setActivePanel, snack
     } = useStorage()
 
     useEffect(()=>{
@@ -28,10 +28,9 @@ export const Profile = ({ id }) => {
                 if(!res.error){
                     setSignatures(res.signatures)
                     setThisUser(res.profile)
+                    setLoad(false)
                 }
             }
-
-            setLoad(false)
         }
 
         fetchData()
@@ -89,6 +88,7 @@ export const Profile = ({ id }) => {
                 </Group>
                 }
             </Group>
+            {snack}
         </Panel>
     )
 }
