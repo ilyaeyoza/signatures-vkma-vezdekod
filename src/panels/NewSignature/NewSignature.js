@@ -120,7 +120,16 @@ export const NewSignature = ({ id }) => {
         setPopout(null)
     }
 
-    useEffect(()=>{console.log(paint)}, [paint])
+    useEffect(()=>{
+        function save(){
+            setTimeout(() => {
+                setActive(false)
+                setActive(true)
+                save()
+            }, 2000);
+        }
+        save()
+    }, [])
 
     return (
         <Panel id = {id}>

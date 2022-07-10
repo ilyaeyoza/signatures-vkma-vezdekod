@@ -16,7 +16,6 @@ const StorageProvider = ({children}) => {
     const [snack, setSnack] = useState(null)
     const [hideFriendsPlaceholder, setHideFriendsPlaceholder] = useState(false)
     const [alreadySet, setAlreadySet] = useState(true)
-    const [isMobile, setIsMobile] = useState(false)
 
     useEffect(() => {
 
@@ -27,10 +26,6 @@ const StorageProvider = ({children}) => {
             let urlSearchParams = new URLSearchParams(window.location.search);
             let params = Object.fromEntries(urlSearchParams.entries());
             setLaunchParams(params)
-
-            if(params.vk_platform == 'mobile_android' || params.vk_platform == 'mobile_iphone'){
-                setIsMobile(true)
-            }
 
             if(params.vk_has_profile_button != '1'){
                 setAlreadySet(false)
@@ -76,8 +71,7 @@ const StorageProvider = ({children}) => {
         activeProfile, openProfile,
         snack, setSnack,
         hideFriendsPlaceholder, setHideFriendsPlaceholder,
-        alreadySet, setAlreadySet,
-        isMobile
+        alreadySet, setAlreadySet
     }
 
     return(

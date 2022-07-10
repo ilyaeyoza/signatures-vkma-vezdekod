@@ -7,29 +7,8 @@ import bridge from "@vkontakte/vk-bridge"
 
 export const SignatureList = ({ signatures, share = false }) => {
 
-    let {
-        isMobile
-    } = useStorage()
-
     function shareToHistory(pic){
-        if(isMobile){
-            bridge.send("VKWebAppShowStoryBox", 
-            {
-                "background_type": "none",
-                "stickers": [
-                  {
-                    "sticker_type": "renderable",
-                    "sticker": {
-                      "can_delete": 0,
-                      "content_type": "image",
-                      "url": pic,
-                    }
-                  }
-                ]
-              }
-            );
-        }else{
-            bridge.send("VKWebAppShowStoryBox", 
+        bridge.send("VKWebAppShowStoryBox", 
             {
                 "background_type": "image",
                 "url": "https://sun3-12.userapi.com/impg/f1NJs1KHiykb-kUdZgCVpqu2iSbPGL94DP2TMw/XY7vfzdN1Zc.jpg?size=1440x2160&quality=96&sign=69a2748d55e248e87e0dd837abfabd86&type=album",
@@ -45,7 +24,6 @@ export const SignatureList = ({ signatures, share = false }) => {
                 ]
               }
             );
-        }
     }
 
     return (

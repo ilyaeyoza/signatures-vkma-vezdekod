@@ -117,11 +117,11 @@ export const Privacy = ({ id }) => {
                 </Placeholder>
                 }
                 
-                {alreadySet &&
+                {/* {alreadySet &&
                 <Div>
                     <Button stretched size="l">Удалить кнопку из профиля</Button>
                 </Div>
-                }
+                } */}
             </Group>
         </Panel>
     )
